@@ -2,7 +2,7 @@ import csv
 import copy
 import logging
 import time
-from random import random
+from random import randrange
 
 from services.fileManagement import read_pdf
 from services.chat_gpt.chat_gpt_question_ans import chat_gpt_question_ans
@@ -27,10 +27,8 @@ def convert_pdf_to_csv():
         writer.writeheader()
 
         for page_data in pdf_reader:
-            # page = pdf_reader.pages[i]
-            # page_data = file_path.getText()
             prompt = "make 5 question with 4 options with explanation from the data given " + page_data
-            sleep_time = random.randint(1, 5)
+            sleep_time = randrange(10)
             time.sleep(sleep_time/10)
             response = chat_gpt_question_ans_obj.ask_query_with_one_answer(prompt)
             if not response:
@@ -53,9 +51,3 @@ def convert_pdf_to_csv():
                         logging.error("Exception while writing to csv")
                         logging.error(csv_writer.row_dict)
                         logging.error(ex)
-
-
-
-
-
-
