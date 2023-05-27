@@ -1,0 +1,6 @@
+# PyPDF2
+nose
+pymupdf==1.22.2
+xlsxwriter
+tablib
+openai~=0.27.2
